@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projets de Yaasine - Portfolio de design graphique">
+    <title>Projets – Portfolio Designer</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <link rel="icon" type="image/png" href="logo_designer.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div align="center" class="header-branding">
+            <img src="logo_designer.png" alt="Logo" class="logo logo-float" loading="lazy">
+            <h1 class="title intro-pop">Mes Projets</h1>
+        </div>
+        <nav align="center" aria-label="Navigation principale">
+            <ul>
+                <li><a href="home.html#home">Accueil</a></li>
+                <li><a href="home.html#about">À propos</a></li>
+                <li><a href="home.html#services">Services</a></li>
+                <li><a href="home.html#gallery">Galerie</a></li>
+                <li><a href="home.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="projects" class="reveal">
+            <h2 align="center"><span class="icon" aria-hidden="true">🎨</span> Tous mes Projets</h2>
+            
+            <!-- Filter buttons -->
+            <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:1em; margin-bottom:2em;">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="branding">miniatures</button>
+                <button class="filter-btn" data-filter="print">Print</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="illustration">Illustration</button>
+            </div>
+
+            <!-- Projects grid -->
+            <div class="grid-gallery" id="projects-grid">
+                <div class="ui-flip-card project-item" data-category="miniatures">
+                    <div class="ui-flip-front">
+                        <img src="logo_cafe_modern.png" alt="Logo Café" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Logo Café Modern</p>
+                        <p class="ui-flip-desc">Identité visuelle complète pour un café moderne. Branding, logo, charte graphique.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-flip-card project-item" data-category="print">
+                    <div class="ui-flip-front">
+                        <img src="affiche_festival.png" alt="Affiche Festival" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Affiche Festival Culture</p>
+                        <p class="ui-flip-desc">Affiche événementielle pour festival culturel. Design vibrant et typographie expressive.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-flip-card project-item" data-category="web">
+                    <div class="ui-flip-front">
+                        <img src="identite_startup.jpg" alt="Identité Start-Up" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Identité Start-Up</p>
+                        <p class="ui-flip-desc">Identité digitale complète pour une start-up tech. Logo, social media, web design.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-flip-card project-item" data-category="branding">
+                    <div class="ui-flip-front">
+                        <img src="logo_cafe_modern.png" alt="Projet 4" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Projet Branding 2</p>
+                        <p class="ui-flip-desc">Charte graphique et identité de marque pour une entreprise locale.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-flip-card project-item" data-category="illustration">
+                    <div class="ui-flip-front">
+                        <img src="affiche_festival.png" alt="Illustration" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Illustration Digitale</p>
+                        <p class="ui-flip-desc">Série d'illustrations modernes pour projets créatifs et publicitaires.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-flip-card project-item" data-category="web">
+                    <div class="ui-flip-front">
+                        <img src="identite_startup.jpg" alt="Web Design" loading="lazy">
+                    </div>
+                    <div class="ui-flip-content">
+                        <p class="ui-flip-title">Web Design</p>
+                        <p class="ui-flip-desc">Maquettes UI/UX pour application web responsive et moderne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">&copy; 2025 Yaasine – Portfolio Designer Graphique. Tous droits réservés.</p>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script>
+        // Projects filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            var filterBtns = document.querySelectorAll('.filter-btn');
+            var projects = document.querySelectorAll('.project-item');
+            
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var filter = this.getAttribute('data-filter');
+                    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    
+                    projects.forEach(function(project) {
+                        if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                            project.style.display = 'block';
+                            setTimeout(function() { project.style.opacity = '1'; }, 10);
+                        } else {
+                            project.style.opacity = '0';
+                            setTimeout(function() { project.style.display = 'none'; }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <style>
+        .filter-btn {
+            padding: 0.6em 1.2em;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--primary-contrast);
+            border-color: var(--primary);
+        }
+        .project-item {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</body>
+</html>
+
+
